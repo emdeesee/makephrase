@@ -17,9 +17,9 @@ First, install [Leiningen](http://leiningen.org/) if you don't have it already.
 
 ## Options
 
-  -n, --how-many <number to generate>  default: 1
-  -l, --length <number of words>       default: 4
-  -h, --help
+    -n, --how-many <number to generate>  default: 1
+    -l, --length <number of words>       default: 4
+    -h, --help
 
 
 ## Examples
