@@ -34,7 +34,7 @@ First, install [Leiningen](http://leiningen.org/) if you don't have it already.
 
 ### Todo
 
- + Write tests for things (i know, i know...)
+ + ~~Write tests for things (i know, i know...)~~
  + Specify alternative word source on command line
  + A flag to enable or disable leetification and add-cap
  + Specify number of bits of entropy, as alternative to number of words
