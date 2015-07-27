@@ -17,10 +17,11 @@ First, install [Leiningen](http://leiningen.org/) if you don't have it already.
 
 ## Options
 
-    -n, --how-many <number to generate>  default: 1
-    -l, --length <number of words>       default: 4
-    -h, --help
-
+```
+-n, --how-many <number to generate>  default: 1
+-l, --length <number of words>       default: 4
+-h, --help
+```
 
 ## Examples
 
@@ -35,7 +36,7 @@ First, install [Leiningen](http://leiningen.org/) if you don't have it already.
 ### Todo
 
  + ~~Write tests for things (i know, i know...)~~
- + Specify alternative word source on command line
+ + [Specify alternative word source on command line](https://github.com/emdeesee/makephrase/issues/1)
  + A flag to enable or disable leetification and add-cap
  + Specify number of bits of entropy, as alternative to number of words
  + Flag to generate phrases in ALL CAPS
