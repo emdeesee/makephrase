@@ -57,7 +57,7 @@
 
 (def options
   "Command line options"
-  [["-n" "--how-many <number to generate>"
+  [["-n" "--how-many <number of phrases>"
     :default 1
     :parse-fn #(Integer/parseInt %)]
 
@@ -72,7 +72,7 @@
    ["-h" "--help"]])
 
 (defn usage [options-summary]
-  (->> ["Generate a relatively strong pass phrase for use in credentials"
+  (->> ["Generate relatively strong passphrases for use in credentials"
         "see https://xkcd.com/936/"
         ""
         "Usage: makephrase [options]"
