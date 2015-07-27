@@ -3,12 +3,13 @@
   (:require [clojure.tools.cli :refer [parse-opts]])
   (:gen-class))
 
-(def ^:dynamic *words*
-  (let [wordsfile "/usr/share/dict/words"]
-    (->> (slurp wordsfile)
-         str/split-lines
-         (map str/trim)
-         (filter #(re-matches #"^[a-z]{3,8}$" %)))))
+(def ^:dynamic *words*)
+
+(defn parse-words-file [wordsfile]
+  (->> (slurp wordsfile)
+       str/split-lines
+       (map str/trim)
+       (filter #(re-matches #"^[a-z]{3,8}$" %))))
 
 (defn apply-to-random-element [f coll]
   "return coll with a random element x replaced by (f x)"
@@ -65,6 +66,9 @@
     :parse-fn #(Integer/parseInt %)
     ]
 
+   ["-w" "--words /path/to/words/file"
+    :default "/usr/share/dict/words"]
+
    ["-h" "--help"]])
 
 (defn usage [options-summary]
@@ -94,5 +98,6 @@
      (:help options) (exit 0 (usage summary))
      (not (empty? arguments)) (exit 1 (usage summary))
      errors (exit 1 (error-msg errors))
-     :else (doseq [_ (range (:how-many options))]
-             (println (make-phrase (:length options)))))))
+     :else (binding [*words* (parse-words-file (:words options))]
+             (doseq [_ (range (:how-many options))]
+               (println (make-phrase (:length options))))))))
