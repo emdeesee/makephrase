@@ -13,9 +13,11 @@
 
 (defn apply-to-random-element [f coll]
   "return coll with a random element x replaced by (f x)"
-  (let [n (rand-int (count coll))
-        e (f (nth coll n))]
-    (concat (take n coll) [e] (drop (inc n) coll))))
+  (if (empty? coll)
+    coll
+    (let [n (rand-int (count coll))
+          e (f (nth coll n))]
+      (concat (take n coll) [e] (drop (inc n) coll)))))
 
 (defn index-nth-if [coll pred n]
   "return the absolute index of the n-th element for which pred is true; nil if not found"
