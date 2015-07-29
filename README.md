@@ -20,6 +20,7 @@ First, install [Leiningen](http://leiningen.org/) if you don't have it already.
 ```
 -n, --how-many <number to generate>  default: 1
 -l, --length <number of words>       default: 4
+-w, --words path/to/words/file       default: /usr/share/dict/words
 -h, --help
 ```
 
