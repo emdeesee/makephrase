@@ -33,8 +33,8 @@
   (index-nth-if coll #(= x %) n))
 
 (defn add-cap [w]
-  (let [n (rand-int (count w))]
-    (str (subs w 0 n) (str/capitalize (subs w n)))))
+  "capitalize a random element of w"
+  (apply str (apply-to-random-element str/upper-case w)))
 
 (defn leetify [w]
   (let [leetmap {\a \4 \e \3 \i \! \l \1 \o \0 \s \5 \t \7 \x "XXX"}

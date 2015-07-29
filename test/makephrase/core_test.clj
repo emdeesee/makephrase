@@ -16,3 +16,8 @@
   (is (= 2 (index-nth-if [:b :a :a :a] #(= :a %) 1)))
   (is (nil? (index-nth-if [:a :a :a :a] #(= :a %) 4))))
 
+(deftest test-add-cap
+  (is (empty? (add-cap "")))
+  (is (= 1 (count (filter #(Character/isUpperCase %) (add-cap "foobarbaz")))))
+  (is (let [s "012,.!@#$%^&*()"] (= s (add-cap s)))))
+
