@@ -16,6 +16,14 @@
   (is (= 2 (index-nth-if [:b :a :a :a] #(= :a %) 1)))
   (is (nil? (index-nth-if [:a :a :a :a] #(= :a %) 4))))
 
+(deftest test-studlify
+  (is (empty? (studlify "")))
+  (is (= "a" (studlify "a")))
+  (is (= "aB"(studlify "ab")))
+  (is (= "AB"(studlify "AB")))
+  (is (let [s "1111111"] (= s (studlify s))))
+  (is (= "aB1Ab" (studlify "ab1ab"))))
+
 (deftest test-add-cap
   (is (empty? (add-cap "")))
   (is (= 1 (count (filter #(Character/isUpperCase %) (add-cap "foobarbaz")))))
