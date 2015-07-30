@@ -13,8 +13,8 @@
   (is (nil? (index-nth-if [:a :b :c] (constantly true) 4)))
   (is (= 0 (index-nth-if [:a :b :c :d] (constantly true) 0)))
   (is (nil? (index-nth-if [] (constantly false) 0)))
-  (is (= 2 (index-nth-if [:b :a :a :a] #(= :a %) 1)))
-  (is (nil? (index-nth-if [:a :a :a :a] #(= :a %) 4))))
+  (is (= 2 (index-nth-if [:b :a :a :a] #{:a}  1)))
+  (is (nil? (index-nth-if [:a :a :a :a] #{:a} 4))))
 
 (deftest test-studlify
   (is (empty? (studlify "")))

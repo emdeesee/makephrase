@@ -30,7 +30,7 @@
 (defn index-nth
   "return the absolute index of the n-th occurrence; nil if not found"
   [coll x n]
-  (index-nth-if coll #(= x %) n))
+  (index-nth-if coll #{x} n))
 
 (defn add-cap [w]
   "capitalize a random element of w"
