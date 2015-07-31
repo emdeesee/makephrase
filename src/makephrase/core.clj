@@ -47,18 +47,15 @@
   (let [fns (cycle [identity str/upper-case])]
     (apply str (map #(%1 %2) fns w))))
 
+(def leetmap {\a \4 \e \3 \i \! \l \1 \o \0 \s \5 \t \7 \x "XXX"})
+
 (defn leetify [w]
-  "apply a \"leet\" transformation to the word w"
-  (let [leetmap {\a \4 \e \3 \i \! \l \1 \o \0 \s \5 \t \7 \x "XXX"}
-        p (re-pattern (format "[%s]" (apply str (keys leetmap))))
-        matches (re-seq p w)]
-    (if matches
-      (let [selection (first (rand-nth matches))
-            freqs (frequencies matches)
-            which (rand-int (get freqs (str selection)))
-            index (index-nth w selection which)]
-        (str (subs w 0 index) (get leetmap selection) (subs w (inc index))))
-      (studlify w))))
+  (if-let [matches (re-seq
+                    (re-pattern (format "[%s]" (apply str (keys leetmap)))) w)]
+    (let [selection (first (rand-nth matches))
+          index (nth-random-occurrence w selection)]
+      (str (subs w 0 index) (get leetmap selection) (subs w (inc index))))
+    (studlify w)))
 
 (defn make-phrase
   "produce a string of words suitable for use as a passphrase"
