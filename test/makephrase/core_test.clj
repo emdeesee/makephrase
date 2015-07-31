@@ -29,3 +29,10 @@
   (is (= 1 (count (filter #(Character/isUpperCase %) (add-cap "foobarbaz")))))
   (is (let [s "012,.!@#$%^&*()"] (= s (add-cap s)))))
 
+(deftest test-nth-random-occurrence
+  (is (nil? (nth-random-occurrence [] :anything)))
+  (is (nil? (nth-random-occurrence [:a :a :a] :not-a)))
+  (is (= 0 (nth-random-occurrence [:a] :a)))
+  (is (let [coll [:a :c :d :e]] (= (dec (count coll)) (nth-random-occurrence coll (last coll)))))
+  (is (#{0 3 4} (nth-random-occurrence [:a nil nil :a :a nil nil] :a))))
+

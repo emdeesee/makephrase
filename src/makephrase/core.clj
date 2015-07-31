@@ -32,6 +32,12 @@
   [coll x n]
   (index-nth-if coll #{x} n))
 
+(defn nth-random-occurrence
+  "get the index of a random occurrence of x in coll; nil if not present"
+  [coll x]
+  (when-let [freq (get (frequencies coll) x)]
+    (index-nth coll x (rand-int freq))))
+
 (defn add-cap [w]
   "capitalize a random element of w"
   (apply str (apply-to-random-element str/upper-case w)))
